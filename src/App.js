@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Button from './component/Button';
+import Display from './component/Display';
 
 function App() {
 
   const [isGranted, setIsGranted] = useState(false)
-  const [data, setData] = useState([])
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
 
@@ -13,14 +13,6 @@ function App() {
     if (window.jsi !== undefined) {
       setIsGranted(window.jsi?.doAction("location"))
       console.log(`isGranted=${isGranted}`)
-    }
-  }
-
-  const getLatLong = () => {
-    if (window.jsi !== undefined) {
-      setData(window.jsi?.getLatLongData())
-      console.log(window.jsi)
-      console.log(`data=${data}`)
     }
   }
 
@@ -40,17 +32,16 @@ function App() {
 
   useEffect(() => {
     console.log(window.jsi)
-  }, [isGranted, data, latitude, longitude])
+  }, [isGranted, latitude, longitude])
 
   return (
     <div className="App">
       <header className="App-header">
         <Button onClick={accessPermission} label="Permission" />
-        <Button onClick={() => { getLatLong(); getLatitude(); getLongitude(); } } label="Lat Long" />
-        <p>isGranted: {isGranted}</p>
-        <p>data: {data}</p>
-        <p>latitude: {latitude}</p>
-        <p>longitude: {longitude}</p>
+        <Button onClick={() => { getLatitude(); getLongitude(); } } label="Lat Long" />
+        <Display value={isGranted}/>
+        <Display value={latitude}/>
+        <Display value={longitude}/>
       </header>
     </div>
   );
