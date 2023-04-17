@@ -1,20 +1,24 @@
+import { useState } from 'react';
 import './App.css';
 import Button from './component/Button';
 
 function App() {
 
+  const [isGranted, setIsGranted] = useState(false)
+  const [data, setData] = useState([])
+
   const accessPermission = () => {
     if (window.jsi !== undefined) {
-      const isGranted = window.jsi?.doAction("location")
-      alert(`isGranted=${isGranted}`)
+      setIsGranted(window.jsi?.doAction("location"))
+      console.log(`isGranted=${isGranted}`)
       return isGranted
     }
   }
 
   const getLatLong = () => {
     if (window.jsi !== undefined) {
-      const data = window.jsi?.getLatLongData()
-      alert(`data=${data}`)
+      setData(window.jsi?.getLatLongData())
+      console.log(`data=${data}`)
       return data
     }
   }
@@ -25,6 +29,10 @@ function App() {
         <Button onClick={accessPermission} label="Permission" />
         <Button onClick={getLatLong} label="Lat Long" />
       </header>
+      <body>
+        <p>isGranted: ${isGranted}</p>
+        <p>latLng: ${data}</p>
+      </body>
     </div>
   );
 }
