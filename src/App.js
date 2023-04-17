@@ -39,9 +39,9 @@ function App() {
       <header className="App-header">
         <Button onClick={accessPermission} label="Permission" />
         <Button onClick={() => { getLatitude(); getLongitude(); } } label="Lat Long" />
-        <Display value={isGranted}/>
-        <Display value={latitude}/>
-        <Display value={longitude}/>
+        <Display label="isGranted" value={isGranted}/>
+        <Display label="latitude" value={latitude}/>
+        <Display label="longitude" value={longitude}/>
       </header>
     </div>
   );

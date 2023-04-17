@@ -2,7 +2,7 @@ import React from 'react'
 
 function Display(props) {
     return (
-        <p>Current Counter: {props.value}</p>
+        <p>{props.label}: {props.value}</p>
     )
 }
 
