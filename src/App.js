@@ -18,7 +18,8 @@ function App() {
   const getLatLong = () => {
     if (window.jsi !== undefined) {
       setData(window.jsi?.getLatLongData())
-      console.log(`data=${data}`)
+      console.log(`latitude=${data[0]}`)
+      console.log(`longitude=${data[1]}`)
       return data
     }
   }
