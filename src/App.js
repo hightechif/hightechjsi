@@ -29,7 +29,8 @@ function App() {
         <Button onClick={accessPermission} label="Permission" />
         <Button onClick={getLatLong} label="Lat Long" />
         <p>isGranted: ${isGranted}</p>
-        <p>latLng: ${data}</p>
+        <p>latitude: ${data[0]}</p>
+        <p>longitude: ${data[1]}</p>
       </header>
     </div>
   );
