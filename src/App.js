@@ -13,7 +13,7 @@ function App() {
 
   const getLatLong = () => {
     if (window.jsi !== undefined) {
-      const data = window.jsi?.doAction("location")
+      const data = window.jsi?.getLatLongData()
       alert(`data=${data}`)
       return data
     }
