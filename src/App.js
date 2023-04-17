@@ -28,11 +28,9 @@ function App() {
       <header className="App-header">
         <Button onClick={accessPermission} label="Permission" />
         <Button onClick={getLatLong} label="Lat Long" />
-      </header>
-      <body>
         <p>isGranted: ${isGranted}</p>
         <p>latLng: ${data}</p>
-      </body>
+      </header>
     </div>
   );
 }
