@@ -11,7 +11,6 @@ function App() {
     if (window.jsi !== undefined) {
       setIsGranted(window.jsi?.doAction("location"))
       console.log(`isGranted=${isGranted}`)
-      return isGranted
     }
   }
 
@@ -20,7 +19,6 @@ function App() {
       setData(window.jsi?.getLatLongData())
       console.log(`latitude=${data[0]}`)
       console.log(`longitude=${data[1]}`)
-      return data
     }
   }
 
