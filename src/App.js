@@ -6,8 +6,8 @@ import Display from './component/Display';
 function App() {
 
   const [isGranted, setIsGranted] = useState(false)
-  const [latitude, setLatitude] = useState(0)
-  const [longitude, setLongitude] = useState(0)
+  const [latitude, setLatitude] = useState(null)
+  const [longitude, setLongitude] = useState(null)
 
   const accessPermission = () => {
     if (window.jsi !== undefined) {
