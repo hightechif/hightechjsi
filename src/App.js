@@ -33,6 +33,9 @@ function App() {
 
   const copyLatLong = () => {
     navigator.clipboard.writeText(`${latitude},${longitude}`)
+    if (window.jsi !== undefined) {
+      window.jsi?.doAction("copy", `${latitude},${longitude}`)
+    }
     setVisibility(true)
     setInterval(() => {
       setVisibility(false)
