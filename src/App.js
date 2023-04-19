@@ -8,6 +8,7 @@ function App() {
   const [isGranted, setIsGranted] = useState(false)
   const [latitude, setLatitude] = useState(null)
   const [longitude, setLongitude] = useState(null)
+  const [isVisible, setVisibility] = useState(false)
 
   const accessPermission = () => {
     if (window.jsi !== undefined) {
@@ -30,6 +31,14 @@ function App() {
     }
   }
 
+  const copyLatLong = () => {
+    navigator.clipboard.writeText(`${latitude},${longitude}`)
+    setVisibility(true)
+    setInterval(() => {
+      setVisibility(false)
+    }, 1200)
+  }
+
   useEffect(() => {
     console.log(window.jsi)
   }, [isGranted, latitude, longitude])
@@ -37,11 +46,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button onClick={accessPermission} label="Permission" />
-        <Button onClick={() => { getLatitude(); getLongitude(); } } label="Lat Long" />
-        <Display label="isGranted" value={isGranted}/>
-        <Display label="latitude" value={latitude}/>
-        <Display label="longitude" value={longitude}/>
+        <Button label="Permission" onClick={accessPermission} />
+        <Button label="Lat Long" onClick={() => { getLatitude(); getLongitude(); }} />
+        <Display label="isGranted" value={isGranted} />
+        <Display label="latitude" value={latitude} />
+        <Display label="longitude" value={longitude} />
+        <Button label="copy lat long" onClick={copyLatLong} />
+        {isVisible && <p>Copied</p>}
       </header>
     </div>
   );
