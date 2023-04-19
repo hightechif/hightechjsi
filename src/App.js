@@ -40,7 +40,9 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(window.jsi)
+    if (window.jsi !== undefined) {
+      console.log(window.jsi) 
+    }
   }, [isGranted, latitude, longitude])
 
   return (
