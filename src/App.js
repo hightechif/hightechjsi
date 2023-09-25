@@ -31,6 +31,14 @@ function App() {
     }
   }
 
+  const toastText = () => {
+    if (window.jsi !== undefined) {
+      const userAgent = navigator.userAgent
+      window.jsi?.doAction("toast", `userAgent=${userAgent}`)
+      console.log(`userAgent=${userAgent}`)
+    }
+  }
+
   const copyLatLong = () => {
     navigator.clipboard.writeText(`${latitude},${longitude}`)
     if (window.jsi !== undefined) {
@@ -57,6 +65,7 @@ function App() {
         <Display label="latitude" value={latitude} />
         <Display label="longitude" value={longitude} />
         <Button label="copy lat long" onClick={copyLatLong} />
+        <Button label="Toast text" onClick={toastText} />
         {isVisible && <p>Copied</p>}
       </header>
     </div>
